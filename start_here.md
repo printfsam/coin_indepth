@@ -1,9 +1,11 @@
-Start Here
-==========
+Cli Commands:
 
 
-Running a testnet:
+Follow Along from https://github.com/ChristopherA/Learning-Bitcoin-from-the-Command-Line/ but with zcash
 
+
+Running a testnet
+-----------------
 Add to zconf
 ```testnet=1
 addnode=testnet.z.cash```
@@ -20,7 +22,6 @@ ProcessMessages - Process messages from a given node
 
 ```
 
-```
 zcash-cli: 
 takes in requests via rpcclient.cpp
 
@@ -28,7 +29,6 @@ takes in requests via rpcclient.cpp
 
 ```
 
-```
 init.cpp
 Contents:
 - Shutdown code for node
@@ -43,7 +43,6 @@ Methods:
 
 ```
 
-```
 tinyformat.h - a typesafe printf in a single C++ file
 
 ```
@@ -63,22 +62,51 @@ bool fPrintToDebugLog = false;
 Create A Wallet
 ---------------
 
+
+
 Refer to https://github.com/zcash/zcash/blob/master/doc/payment-api.md for an indepth analysis
 
 
 
-Create a new z_address: Run `z_getnewaddress`
-
-Code:
-
-```
-libzcash::PaymentAddress CWallet::GenerateNewZKey() `https://github.com/zcash/zcash/blob/3e38e248d5f43767940becdd4d51df8feaa7b707/src/wallet/wallet.cpp#L83`
-
-
-
-
-
-```
-
+Create a new z_address:
+-----------------------
+`./zcash-cli z_getnewaddress`
 
 Adresses will be added to the nodes wallet. Node wallet is stored in /home/.zcash/wallet.dat
+
+Get balance
+-----------
+`./zcash-cli getbalance`
+
+Get unconfirmed balance
+-----------------------
+`./zcash-cli getunconfirmedbalance`
+
+Get Confirmation depth
+----------------------
+`./zcash-cli getbalance "*" 1 \\ Confirms if the balance is '1' block deep` 
+
+Get wallet info
+---------------
+```
+./zcash-cli getwalletinfo
+{
+  "walletversion": 60000,
+  "balance": 0.00000000,
+  "unconfirmed_balance": 0.00000000,
+  "immature_balance": 0.00000000,
+  "txcount": 5,
+  "keypoololdest": 1523036581,
+  "keypoolsize": 101,
+  "paytxfee": 0.00000000
+}
+```
+
+
+List Transactions
+-----------------
+`./zcash-cli listtransactions`
+
+List Unspent Tx's
+-----------------
+`./zcash-cli listunspent`

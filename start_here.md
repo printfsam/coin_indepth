@@ -68,8 +68,8 @@ Refer to https://github.com/zcash/zcash/blob/master/doc/payment-api.md for an in
 
 
 
-Create a new z_address:
------------------------
+### Create a new z_address:
+
 `./zcash-cli z_getnewaddress`
 
 Adresses will be added to the nodes wallet. Node wallet is stored in /home/.zcash/wallet.dat

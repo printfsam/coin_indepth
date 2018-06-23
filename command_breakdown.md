@@ -23,12 +23,33 @@ Commands
 * Displays commands
 
 ### Create an Address
+`./zcash-cli getnewaddress`
 
 ### Sign a message
+`./zcash-clicsignmessage "[ADDRESS]" "[MESSAGE]"`
+
+### Verify Message
+`./zcash-cli verifymessage "[ADDRESS]" "[SIGNED_MESSAGE]" "[MESSAGE]"`
 
 ### Dump Your Wallet
+Creates a backup of your wallet (Need to set `exportdir=` in conf file first, if running the zcashd then restart when you change zcash.conf)
+
+`./zcash-cli backupwallet backup`
+
+### Import back in
+`./zcash-cli importwallet backup`
 
 ### View Private Keys
+Dumps all wallet data
+`./zcash-cli dumpwallet walletDump`
+
+Only Private Keys
+`./zcash-cli dumpprivkey "[ADDRESS]"`
+
+Import Priv key back in
+
+`./zcash-cli importprivkey [KEY]`
+
 
 ### Get balance
 
@@ -71,6 +92,19 @@ Commands
 (1 to get info, no arg to get hex tx data)
 
 `./zcash-cli getrawtransaction "[txid]" 1`
+
+### Sending ZEC
+switch over to testnet:
+1. Add:
+```
+In zcash.conf
+addnode=testnet.z.cash
+testnet=1
+```
+2. Get a new address
+`./zcash-cli getnewaddress`
+3. Head over to faucet.testnet.z.cash
+4. Get Raw Tx and search chain:
 
 
 Zcash Specific
